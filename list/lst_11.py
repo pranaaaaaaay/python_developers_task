@@ -50,7 +50,8 @@ while True:
                         break
                 if found:
                     print(f"{id} already exist")
-                id = int(id)
+                    continue
+                # id = int(id)
 
                 name = input("Enter the name of student =").strip().title()
                 if name == "":
@@ -59,19 +60,108 @@ while True:
                 if not name.replace(" ","").isalpha():
                     print("Only Character allowed")
                     continue
+                mob = input("Enter the mobile number = ").strip()
+                if mob == "":
+                    print("Please enter mobile number")
+                    continue
+                if not mob.isdigit():
+                    print("Only digits allowed")
+                    continue
+                
+                if mob[0] not in "6789":
+                    print("Please enter valid mobile number")
+                    continue
+                
+                # mob = int(mob)
+                if len(mob) != 10:
+                    print("Please check the mobile number")
+                    continue
+        
+                mark = input("Enter the marks of student = ").strip()
+
+                if mark == "":
+                    print("Please enter the mark")
+                    continue
+
+                if not mark.isdigit():
+                    print("Only digit allowed")
+                    continue
+                mark = int(mark)
+
+                if mark < 0 or mark > 100:
+                    print("Please enter the mark between 0 to 100")
+                    continue
+
+                city = input("Enter the city name = ").strip().title()
+
+                # add the data inside the list
+                stud.append([id,name,mob,mark,city])
+                print(Fore.GREEN+"Data inserted successfully"+Style.RESET_ALL)
+
             case 2:
-                pass
+             if len(stud) == 0:
+                print("Empty Database")
+             else:
+                 print("-"*80)
+                 print("{:<5}{:<20}{:<15}{:<6}{:<10}".format("ID","Name","Mobile","Marks","City"))
+                 print("-"*80)
+                 for s in stud:
+                     print("{:<5}{:<20}{:<15}{:<10}{:<10}".format(s[0],s[1],s[2],s[3],s[4]))
+                
+                 print("-"*80) 
+
             case 3:
-                pass
+                if len(stud) == 0:
+                    print("No data found")
+                
+                search_id = input("Enter the id to search = ")
+                if search_id == 0:
+                    print("please enter to serach")
+                    continue
+                if not search_id.isdigit():
+                    print("Only digit allowed")
+                    continue
+                found = False
+                for s in stud:
+                    if s[0] == search_id:
+                        print("\n Data Found")
+                        print("-"*50)
+                        print("ID       :",s[0])
+                        print("Name     :",s[1])
+                        print("Mobile   :",s[2])
+                        print("Marks    :",s[3])
+                        print("City     :",s[4])
+                        found = True
+                        break
+                if not found:
+                    print("No reacord found.Please check the ID")
+
             case 4:
-                pass
+                print("Code under construction....")
             case 5:
-                pass
+                if len(stud) == 0:
+                    print("No data found")
+                search_id_del = input("Enter the id to delete = ")
+
+                if search_id_del == 0:
+                    print("Please eneter the id to delete")
+                    continue
+                if not search_id_del.isdigit():
+                    print("Only digit allowed")
+                    continue
+                found = False
+                for s in stud:
+                    if s[0] == search_id_del:
+                        stud.remove(s)
+                        print("Data deleted successfully")
+                        found = True
+                        break
+                if not found:
+                    print("No record found. Please check the id")
+         
+                    
             case 6:
                 print("Thanks for using our App. Visit again")
                 break
             case _:
                 print("Invalid choce")
-
-
-
