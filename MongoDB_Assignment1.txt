@@ -1,0 +1,94 @@
+Name: Pranay Bhosale
+Roll no: 26306
+MongoDB Basic Level – 25 Practice ASSIGNMENT
+
+A. Database and Collection Operations
+
+Answers:
+1) use college
+2) db.createCollection("students")
+3) show collections
+4) db.students.insertOne({
+	name: "Pranay",
+	age: 24,
+   	gender: 'Male',
+    	course: 'MCA',
+    	department: 'DATA SCIENCE',
+    	city: 'Pune',
+    	marks: 98,
+    	fees: 67000,
+    	isActive: false	
+})
+
+5)db.students.insertMany([
+    {name: "Nachi", age: 22, gender: "Male", department: "IT", city: "Mumbai", marks: 78, fees: 40000, isActive: true},
+    {name: "Esha", age: 21, gender: "Female", department: "Computer", city: "Pune", marks: 90, fees: 45000, isActive: true},
+    {name: "Someshwer", age: 20, gender: "Male", department: "IT", city: "Nashik", marks: 65, fees: 35000, isActive: false},
+    {name: "Sakshi", age: 23, gender: "Female", department: "Computer", city: "Pune", marks: 88, fees: 48000, isActive: true},
+    {name: "Raydu", age: 22, gender: "Male", department: "Science", city: "Mumbai", marks: 72, fees: 42000, isActive: true}	
+])
+
+B. Read and Display Operations
+Answers:
+
+6) db.students.find()
+7) db.students.find().sort({id:1}).limit(5)
+8) db.students.find({age: {$gt: 20}})
+9) db.students.find({marks: {$gt: 75}})
+10) db.students.find({department: {$eq: "Computer"}})
+11) db.students.find({city: {$eq: "Pune"}})
+12) db.students.find({}, {name: 1, marks: 1, _id: 0})
+13) db.students.find({gender: {$eq: "Female"}})
+14) db.students.find({fees:{$lt: 50000}})
+15) db.students.find({isActive: true})
+
+C. Filtering and Sorting Operations
+Answers:
+
+16) db.students.find({marks: {$gte: 60, $lte: 90}})
+17) db.students.find({
+  $or: [
+    { department: "Computer" },
+    { department: "IT" }
+  ]
+})
+
+18) db.students.find({age: {$ne: 20}})
+19) db.students.find().sort({marks: 1})
+20) db.students.find().sort({marks: -1})
+
+D. Update and Delete Operations
+Answers:
+
+21) db.students.updateOne(
+    {name: "Rahul"},
+    {$set: {marks: 85}}
+)
+
+22) db.students.updateOne(
+    {name: "Amit"},
+    {$inc: {fees: 5000}}
+)
+
+23) db.students.updateOne(
+    {name: "Rahul"},
+    {$set: {email: "rahul@gmail.com"}}
+)
+
+24) db.students.deleteOne({name: "Rohit Joshi"})
+
+25) db.students.deleteMany({marks: {$lt: 35}})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
